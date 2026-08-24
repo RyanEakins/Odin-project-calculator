@@ -1,33 +1,8 @@
+let currentInput = '';
+let currentOperation = '';
+let previousInput = '';
 
-const a = 12;
-const b = 15;
-const array = [15, 265, 23, 45, 665];
-
-const add = function(a, b) {
-    return a + b;
-};
-
-const subtract = function (a, b) {
-    return a - b;
-};
-
-function sumArray(array) {
-   const sum = array.reduce(function(total, item) {
-    return total + item;
-   });
-   return sum;
-};
-
-function multiplyArray(array) {
-    const multiply = array.reduce(function(product, item) {
-        return product * item;
-    });
-    return multiply;
-};
-
-const divide = function (a, b) {
-    return a % b;
-};
+// Function for Calculating 
 
 function calculator (a, b, c) {
     let output = 0;
@@ -62,4 +37,32 @@ function calculator (a, b, c) {
     return output;
 }
 
-console.log(calculator(a, b, '*'));
+// Function for Appending the Numbers
+
+function appendNum(number) {
+    currentInput += number;
+    document.getElementById('display').value = 
+    `${previousInput} ${currentOperation} ${currentInput}`;
+};
+
+// Function for Appending the Operation
+
+function appendOp(operation) {
+    if (currentInput === '') return;
+    if (previousInput !== '') {
+        calculator();
+    }
+    currentOperation = operation;
+    previousInput = currentInput;
+    currentInput = '';
+    document.getElementById('display').value = `${previousInput} ${currentOperation}`;
+};
+
+// Function for Clearing Display
+
+function clearDisplay() {
+    currentInput = '';
+    previousInput = '';
+    currentOperation = '';
+    document.getElementById('display').value = '';
+};
