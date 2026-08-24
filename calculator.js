@@ -1,6 +1,6 @@
-let currentInput = '';
-let currentOperation = '';
-let previousInput = '';
+let currentInput = ''; // Stores current number being typed.
+let currentOperation = ''; // Stores current operation being typed.
+let previousInput = ''; 
 
 // Function for Calculating 
 
@@ -33,11 +33,17 @@ function calculator (a, b, c) {
     }
     catch(e) {
         console.log("There's an error: ", e)
+        return;
     }
-    return output;
+
+    currentInput = result.toString();
+    currentOperation = '';
+    previousInput = '';
+    document.getElementById('display').value = currentInput;
 }
 
 // Function for Appending the Numbers
+// This function adds the numbers clicked by the user into the currentInput and updates the display. 
 
 function appendNum(number) {
     currentInput += number;
@@ -46,6 +52,7 @@ function appendNum(number) {
 };
 
 // Function for Appending the Operation
+// This function adds the operation, appends it, and prepares for the next number clicked. 
 
 function appendOp(operation) {
     if (currentInput === '') return;
@@ -59,6 +66,7 @@ function appendOp(operation) {
 };
 
 // Function for Clearing Display
+// Resets all inputs and updates the display to be cleared. 
 
 function clearDisplay() {
     currentInput = '';
