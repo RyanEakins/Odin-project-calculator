@@ -4,37 +4,35 @@ let previousInput = '';
 
 // Function for Calculating 
 
-function calculator (a, b, c) {
-    let output = 0;
+function calculator() {
+    if (previousInput === '' || currentInput === '') return;
+    let output;
+    let prev = parseFloat(previousInput);
+    let current = parseFloat(currentInput);
 
-    try {
-
-        switch(c) {
-            case '+':
-                output = a + b
-                break;
+    switch(currentOperation) {
+        case '+':
+            output = prev + current
+            break;
             
-            case '*':
-                output = a * b
-                break;
+        case '*':
+            output = prev * current
+            break;
             
-            case '-':
-                output = a - b
-                break;
+        case '-':
+            output = prev - current
+            break;
 
-            case '%':
-                if (b === 0) {
-                    throw "Can't divide by 0!"
-                } else {
-                    output = a % b
-                }
-                break;
+        case '%':
+            if (current === 0) {
+                alert("Can't divide by 0!");
+                return;
+            }
+            output = prev % current;
+            break;
+        default:
+            return;
         }
-    }
-    catch(e) {
-        console.log("There's an error: ", e)
-        return;
-    }
 
     currentInput = result.toString();
     currentOperation = '';
