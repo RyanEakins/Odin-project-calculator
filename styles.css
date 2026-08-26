@@ -10,7 +10,7 @@ body {
 
 .calculator {
     width: 300px;
-    background-color: d;
+    background-color: darkblue;
     border-radius: 20px;
     padding: 20px;
 }
@@ -30,9 +30,13 @@ body {
 .buttons {
     display: grid;
     grid-template-rows: auto;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .button {
-
+    border: 0.5 solid #999;
+    line-height: 100px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
 }

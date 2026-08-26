@@ -2,44 +2,6 @@ let currentInput = ''; // Stores current number being typed.
 let currentOperation = ''; // Stores current operation being typed.
 let previousInput = ''; 
 
-// Function for Calculating 
-
-function calculator() {
-    if (previousInput === '' || currentInput === '') return;
-    let output;
-    let prev = parseFloat(previousInput);
-    let current = parseFloat(currentInput);
-
-    switch(currentOperation) {
-        case '+':
-            output = prev + current
-            break;
-            
-        case '*':
-            output = prev * current
-            break;
-            
-        case '-':
-            output = prev - current
-            break;
-
-        case '%':
-            if (current === 0) {
-                alert("Can't divide by 0!");
-                return;
-            }
-            output = prev % current;
-            break;
-        default:
-            return;
-        }
-
-    currentInput = result.toString();
-    currentOperation = '';
-    previousInput = '';
-    document.getElementById('display').value = currentInput;
-}
-
 // Function for Appending the Numbers
 // This function adds the numbers clicked by the user into the currentInput and updates the display. 
 
@@ -61,6 +23,41 @@ function appendOp(operation) {
     previousInput = currentInput;
     currentInput = '';
     document.getElementById('display').value = `${previousInput} ${currentOperation}`;
+};
+
+// Function for Calculating 
+
+function calculator() {
+    if (previousInput === '' || currentInput === '') return;
+    let output;
+    let prev = parseFloat(previousInput);
+    let current = parseFloat(currentInput);
+
+    switch(currentOperation) {
+        case '+':
+            output = prev + current
+            break;
+        case '*':
+            output = prev * current
+            break; 
+        case '-':
+            output = prev - current
+            break;
+        case '/':
+            if (current === 0) {
+                alert("Can't divide by 0!");
+                return;
+            }
+            output = prev / current;
+            break;
+        default:
+            return;
+        }
+
+    currentInput = output.toString();
+    currentOperation = '';
+    previousInput = '';
+    document.getElementById('display').value = currentInput;
 };
 
 // Function for Clearing Display
